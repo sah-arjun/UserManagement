@@ -1,0 +1,46 @@
+{
+  "name": "usermanagement",
+  "version": "1.0.0",
+  "description": "A user management module based on ReactJS, Material UI",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sah-arjun/UserManagement.git"
+  },
+  "keywords": [
+    "ReactJS",
+    "React16",
+    "MaterialUI",
+    "Webpack4",
+    "Babel"
+  ],
+  "author": "Arjun <sah.arjun07@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sah-arjun/UserManagement/issues"
+  },
+  "homepage": "https://github.com/sah-arjun/UserManagement#readme",
+  "dependencies": {
+    "@material-ui/core": "^1.4.3",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "html-webpack-plugin": "^3.2.0",
+    "react-hot-loader": "^4.3.4",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
