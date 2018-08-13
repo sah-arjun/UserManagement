@@ -1,11 +1,10 @@
 const path = require('path');
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const port = process.env.PORT || 3000;
 
 module.exports = {
-  // mode: 'development',
   devtool: 'inline-source-map',
 
   entry: './src/js/index.js',
@@ -29,6 +28,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
+    publicPath: '',
   },
 
   plugins: [
@@ -41,5 +41,12 @@ module.exports = {
     host: 'localhost',
     port: port,
     historyApiFallback: true,
+    publicPath: '', // match the output `publicPath`
+    proxy: {
+      '/api': {
+        target: 'https://api.github.com/users',
+        pathRewrite: { '^/api': '' },
+      },
+    },
   },
 };
