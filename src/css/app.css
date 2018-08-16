@@ -1,0 +1,30 @@
+/* $ELEMENT */
+html {
+  font-family: "Roboto", Arial, sans-serif;
+  background-color: #FAFAFA;
+  -moz-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+}
+
+*, *::before, *::after {
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+/* $SHARED */
+html, h1, h2, h3, h4, h5, h6, button {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+h1 {
+  /* override Blueprint h1 style */
+  margin: 0 0 10px;
+  font-size: 22px !important;
+}
+
+.button-home-menu:hover {
+  background-color: #fafafa !important;
+  color: rgb(242, 101, 50) !important;
+  box-shadow: 0 0 0 2px rgb(242, 101, 50) inset, 0 5px 10px #f1f1f1;
+  transform: translate(0, -4px);
+}

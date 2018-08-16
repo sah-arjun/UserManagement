@@ -28,8 +28,9 @@ const styles = {
   noStyle: {},
   title: { fontSize: '1.5em', color: 'rgb(242, 101, 50)', textAlign: 'center' },
 };
-
-const urlForGithubUser = username => `/api/${username}`;
+const urlForGithubUser = '/api/';
+const username = '';
+const password = '';
 
 class Login extends Component {
   constructor(props) {
@@ -40,12 +41,9 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    fetch(urlForGithubUser('sah-arjun'), {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-
+    fetch(`${urlForGithubUser}`, {
+      method: 'GET',
+      headers: { Authorization: `Basic ${window.btoa(`${username}:${password}`)}` },
     })
       .then(response => response.json())
       .then((response) => {

@@ -21,6 +21,10 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'],
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
 
     ],
   },
@@ -34,18 +38,20 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html',
+      filename: './index.html',
     }),
   ],
 
   devServer: {
     host: 'localhost',
-    port: port,
+    port: process.env.WEBPACK_SERVER_PORT || port, // WEBPACK_SERVER_PORT=8083 npm start
     historyApiFallback: true,
     publicPath: '', // match the output `publicPath`
     proxy: {
       '/api': {
-        target: 'https://api.github.com/users',
+        target: 'http://localhost:8090/customer',
         pathRewrite: { '^/api': '' },
+        changeOrigin: true,
       },
     },
   },
