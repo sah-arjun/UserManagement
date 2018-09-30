@@ -11,7 +11,8 @@
             { "ignore": "ignore", "customValidators": "customValidator" }
           ],
           "quote-props": "off",
-          "no-console": "off"
+          "no-console": "off",
+          "max-len": "off"
           
     },
     "env": {
