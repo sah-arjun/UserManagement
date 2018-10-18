@@ -51,6 +51,14 @@ class Login extends Component {
     this.doAuth = this.doAuth.bind(this);
   }
 
+  get canAttemptLogin() {
+    const { username, password } = this.state;
+    return (
+      username.length === 0
+      || password.length === 0
+    );
+  }
+
   // Extracting into local methods because calling an anonymous function like this ( () => {} ) within the render method will create a new method
   // each time the component is rendered, which is a small performance hit.
   handleOnChangeUsername = e => this.setState({ username: e.target.value })
@@ -117,8 +125,7 @@ class Login extends Component {
                 color="primary"
                 className={classes.submit}
                 onClick={this.doAuth}
-                disabled={username.length === 0
-                  || password.length === 0}
+                disabled={this.canAttemptLogin}
               >
               Sign in
               </Button>
