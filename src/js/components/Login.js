@@ -3,14 +3,13 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
 import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import TextField from '@material-ui/core/TextField';
 
-import { APP_TITLE, API_HOST } from '../settings';
+import { APP_TITLE, API_HOST, FIELD_EMPTY } from '../settings';
 
 const styles = theme => ({
   layout: {
@@ -49,9 +48,14 @@ class Login extends Component {
       username: '',
       password: '',
     };
-
     this.doAuth = this.doAuth.bind(this);
   }
+
+  // Extracting into local methods because calling an anonymous function like this ( () => {} ) within the render method will create a new method
+  // each time the component is rendered, which is a small performance hit.
+  handleOnChangeUsername = e => this.setState({ username: e.target.value })
+
+  handleOnChangePassword = e => this.setState({ password: e.target.value })
 
   doAuth() {
     const { username, password } = this.state;
@@ -85,26 +89,29 @@ class Login extends Component {
             </Avatar>
             <Typography variant="headline">{APP_TITLE}</Typography>
             <form className={classes.form}>
-              <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="username">Username</InputLabel>
-                <Input
+              <FormControl margin="normal" fullWidth>
+                <TextField
                   id="username"
-                  name="username"
-                  onChange={e => this.setState({ username: e.target.value })}
+                  label="Username"
+                  required
+                  onChange={this.handleOnChangeUsername}
                   autoFocus
+                  helperText={username === '' ? FIELD_EMPTY : ''}
+                  error={username === ''}
                 />
               </FormControl>
-              <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="password">Password</InputLabel>
-                <Input
-                  name="password"
+              <FormControl margin="normal" fullWidth>
+                <TextField
+                  required
+                  helperText={password === '' ? FIELD_EMPTY : ''}
+                  error={password === ''}
                   type="password"
                   id="password"
-                  onChange={e => this.setState({ password: e.target.value })}
+                  label="Password"
+                  onChange={this.handleOnChangePassword}
                 />
               </FormControl>
               <Button
-                type="submit"
                 fullWidth
                 variant="raised"
                 color="primary"
